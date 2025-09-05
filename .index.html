@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pembelajaran Jaringan Komputer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom right, #66ccff, #003366);
+      color: white;
+    }
+    header {
+      text-align: center;
+      padding: 30px 20px;
+    }
+    nav {
+      background: rgba(0, 0, 50, 0.6);
+      padding: 10px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    section {
+      padding: 20px;
+      margin: 20px auto;
+      width: 85%;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
+    }
+    h2 {
+      color: #ffeb3b;
+    }
+    footer {
+      background: rgba(0,0,50,0.8);
+      text-align: center;
+      padding: 15px;
+      margin-top: 20px;
+    }
+    button {
+      background: #004080;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background: #0099cc;
+    }
+    .quiz {
+      margin-top: 20px;
+    }
+    .quiz input {
+      margin: 5px;
+    }
+    .result {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #ffeb3b;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🌐 Website Pembelajaran Jaringan</h1>
+    <p>Belajar Dasar Jaringan Komputer untuk Siswa SMK</p>
+  </header>
+
+  <nav>
+    <a href="#materi1">Pengertian</a>
+    <a href="#materi2">Jenis Jaringan</a>
+    <a href="#materi3">Perangkat</a>
+    <a href="#kuis">Kuis</a>
+  </nav>
+
+  <section id="materi1">
+    <h2>1. Pengertian Jaringan Komputer</h2>
+    <p>Jaringan komputer adalah sekumpulan komputer yang saling terhubung untuk berbagi data, informasi, dan sumber daya.</p>
+  </section>
+
+  <section id="materi2">
+    <h2>2. Jenis-Jenis Jaringan Berdasarkan Jangkauan</h2>
+    <ul>
+      <li><b>LAN (Local Area Network)</b> – Jaringan dalam area kecil, misalnya sekolah atau kantor.</li>
+      <li><b>MAN (Metropolitan Area Network)</b> – Jaringan dalam lingkup kota.</li>
+      <li><b>WAN (Wide Area Network)</b> – Jaringan yang mencakup area luas bahkan antar negara.</li>
+    </ul>
+  </section>
+
+  <section id="materi3">
+    <h2>3. Perangkat Jaringan Dasar</h2>
+    <ol>
+      <li><b>Switch</b> – Menghubungkan banyak komputer dalam LAN.</li>
+      <li><b>Router</b> – Menghubungkan jaringan lokal ke internet.</li>
+      <li><b>Access Point</b> – Memberikan akses jaringan secara nirkabel (WiFi).</li>
+      <li><b>Kabel UTP</b> – Media penghantar data.</li>
+    </ol>
+    <button onclick="alert('Bagus! Kamu sudah paham tentang perangkat jaringan 🎉')">Saya Paham</button>
+  </section>
+
+  <section id="kuis">
+    <h2>📝 Kuis Jaringan Komputer</h2>
+    <p>Jawab pertanyaan berikut:</p>
+    <div class="quiz">
+      <p>1. Jaringan yang mencakup area kecil, seperti sekolah disebut?</p>
+      <input type="radio" name="q1" value="LAN"> LAN<br>
+      <input type="radio" name="q1" value="WAN"> WAN<br>
+      <input type="radio" name="q1" value="MAN"> MAN<br>
+    </div>
+    <div class="quiz">
+      <p>2. Perangkat yang digunakan untuk menghubungkan jaringan lokal ke internet adalah?</p>
+      <input type="radio" name="q2" value="Switch"> Switch<br>
+      <input type="radio" name="q2" value="Router"> Router<br>
+      <input type="radio" name="q2" value="Access Point"> Access Point<br>
+    </div>
+    <div class="quiz">
+      <p>3. Singkatan dari WAN adalah?</p>
+      <input type="radio" name="q3" value="Wide Area Network"> Wide Area Network<br>
+      <input type="radio" name="q3" value="Wireless Access Node"> Wireless Access Node<br>
+      <input type="radio" name="q3" value="Wide Access Network"> Wide Access Network<br>
+    </div>
+    <button onclick="checkQuiz()">Periksa Jawaban</button>
+    <div class="result" id="result"></div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Pembelajaran Jaringan SMK | Belajar itu Keren 🚀</p>
+  </footer>
+
+  <script>
+    function checkQuiz() {
+      let score = 0;
+
+      // Ambil jawaban
+      const q1 = document.querySelector('input[name="q1"]:checked');
+      const q2 = document.querySelector('input[name="q2"]:checked');
+      const q3 = document.querySelector('input[name="q3"]:checked');
+
+      if (q1 && q1.value === "LAN") score++;
+      if (q2 && q2.value === "Router") score++;
+      if (q3 && q3.value === "Wide Area Network") score++;
+
+      const result = document.getElementById("result");
+      result.innerHTML = `Nilai kamu: ${score}/3`;
+
+      if (score === 3) {
+        result.innerHTML += " 🎉 Hebat! Semua benar!";
+      } else {
+        result.innerHTML += " ⚡ Coba lagi ya!";
+      }
+    }
+  </script>
+</body>
+</html>
